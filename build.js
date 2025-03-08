@@ -11,35 +11,41 @@ const options = {
   padding: 1,
   margin: 1,
   borderStyle: "round",
-  borderColor: "magenta",
+  borderColor: "green",
 };
 
 // Text + chalk definitions
 const data = {
-  name: chalk.white("      Atila Fassina"),
+  name: chalk.white("Atila Fassina"),
   handle: chalk.white("atilafassina"),
   shorthandle: chalk.white("atila"),
-  work: chalk.white("Senior DX Engineer") + chalk.magenta(" at Xata"),
-  twitter: chalk.cyan("twitter.com/") + chalk.cyan("atilafassina"),
+  work: chalk.white("Fullstack Engineer") + chalk.green(" at Neon"),
+  twitter: chalk.cyan("x.com/") + chalk.cyan("atilafassina"),
+  bsky: chalk.cyan("bsky.app/profile/") + chalk.cyan("atila.io"),
+  gde: chalk.cyan("g.dev/") + chalk.cyan("atilaf"),
   npm: chalk.cyan("npmjs.com/") + chalk.cyan("~atilaz"),
   github: chalk.cyan("github.com/") + chalk.cyan("atilafassina"),
   linkedin: chalk.cyan("linkedin.com/in/") + chalk.cyan("atilafassina"),
   web: chalk.cyan("atila.io"),
-  npx: chalk.red("npx") + " " + chalk.white("atila"),
-  labelWork: chalk.white.bold("    Work:"),
-  labelTwitter: chalk.white.bold(" Twitter:"),
-  labelnpm: chalk.white.bold("     npm:"),
-  labelGitHub: chalk.white.bold("  GitHub:"),
+  npx: chalk.green("npx") + " " + chalk.white("atila"),
+  labelWork: chalk.white.bold("Work:"),
+  labelBlueSky: chalk.white.bold("BlueSky:"),
+  labelTwitter: chalk.white.bold("X / Twitter:"),
+  labelGde: chalk.white.bold("GDE Profile:"),
+  labelnpm: chalk.white.bold(" npm:"),
+  labelGitHub: chalk.white.bold("GitHub:"),
   labelLinkedIn: chalk.white.bold("LinkedIn:"),
-  labelWeb: chalk.white.bold("     Web:"),
-  labelCard: chalk.white.bold("    Card:"),
+  labelWeb: chalk.white.bold("Web:"),
+  labelCard: chalk.white.bold("Card:"),
 };
 
 // Actual strings we're going to output
 const newline = "\n";
 const heading = `${data.name} / ${data.handle}`; //`${data.name} / ${data.handle} / ${data.shorthandle}`;
 const working = `${data.labelWork}  ${data.work}`;
+const bskying = `${data.labelBlueSky}  ${data.bsky}`;
 const twittering = `${data.labelTwitter}  ${data.twitter}`;
+const gdeing = `${data.labelGde}  ${data.gde}`;
 // const npming = `${data.labelnpm}  ${data.npm}`;
 const githubing = `${data.labelGitHub}  ${data.github}`;
 const linkedining = `${data.labelLinkedIn}  ${data.linkedin}`;
@@ -57,17 +63,19 @@ const output =
   newline +
   newline + // data.labelWork + data.work
   twittering +
-  newline + // data.labelTwitter + data.twitter
-  // npming +
-  // newline + // data.labelnpm + data.npm
-  githubing +
+  newline + // data.labelBlusky + data.bsky
+  bskying +
   newline + // data.labelGitHub + data.github
-  linkedining +
+  githubing +
   newline + // data.labelLinkedIn + data.linkedin
+  linkedining +
+  newline +
+  gdeing +
+  newline + // data.labelTwitter + data.twitter
   newline +
   carding; // data.labelCard + data.npx
 
 fs.writeFileSync(
-  path.join(__dirname, "bin/output"),
-  chalk.magenta(boxen(output, options))
+  path.join(__dirname, "bin/output.txt"),
+  chalk.green(boxen(output, options))
 );
